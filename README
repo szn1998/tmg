@@ -1,0 +1,64 @@
+# -*- mode:org; mode:auto-fill; fill-column:80; coding:utf-8; -*-
+#+title: TMG: A Tibetan Music Generation Project
+#+author: Sangjee Dondrub
+
+* Table of Contents                                                               :TOC:
+- [[#get-started][Get started]]
+- [[#data-collection][Data Collection]]
+- [[#data-preprocessing][Data Preprocessing]]
+- [[#model-design][Model Design]]
+- [[#model-training][Model Training]]
+- [[#model-evaluation][Model Evaluation]]
+- [[#conclusion][Conclusion]]
+
+* Get started
+
+Python env
+
+#+begin_src sh
+poetry env use 3.9
+#+end_src
+
+Install dependencies
+
+#+begin_src sh
+make depends
+#+end_src
+
+Test
+
+#+begin_src sh
+make test
+#+end_src
+
+Docs
+
+#+begin_src sh
+make docs
+#+end_src
+
+Pre-commit
+
+#+begin_src sh
+make commit
+#+end_src
+
+Build Package
+
+#+begin_src sh
+make build
+#+end_src
+
+* Data Collection
+
+http://music.tibet3.com/
+
+* Data Preprocessing
+
+* Model Design
+
+* Model Training
+
+* Model Evaluation
+
+* Conclusion
