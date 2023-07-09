@@ -29,6 +29,7 @@ commit:
 docs: docs-deploy docs-serve
 
 docs-deploy:
+	poetry run mike set-default `poetry version --short`
 	poetry run mike deploy -p `poetry version --short`
 docs-serve:
 	poetry run mike serve
