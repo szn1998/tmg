@@ -6,6 +6,8 @@
 - [[#get-started][Get started]]
 - [[#ondo-data-collection][ONDO Data Collection]]
 - [[#data-preprocessing][Data Preprocessing]]
+  - [[#mp3-to-midi][mp3 to midi]]
+  - [[#vocal-removing][Vocal removing]]
 - [[#model-design][Model Design]]
 - [[#model-training][Model Training]]
 - [[#model-evaluation][Model Evaluation]]
@@ -64,7 +66,33 @@ scrapy run spider music_crawl/spider/tibet3.py
 
 * Data Preprocessing
 
+** mp3 to midi
+
+Basic Pitch, a free audio-to-MIDI converter with pitch bend detection, built by
+Spotify, Learn more at: https://github.com/spotify/basic-pitch
+
+#+begin_src sh
+pip install basic-pitch
+basic-pitch output-path/ sample.mp3
+#+end_src
+
++ https://github.com/jason9693/midi-neural-processor
+
+** Vocal removing
+
++ https://vocalremover.org/
++ https://github.com/deezer/spleeter
+
+#+begin_src sh
+spleeter separate -p spleeter:2stems -o output sample.mp3
+#+end_src
+
 * Model Design
+
++ https://carlosholivan.github.io/DeepLearningMusicGeneration/
++ https://github.com/Khamies/PianoNotes-LSTM-Generation
++ https://www.tensorflow.org/tutorials/audio/music_generation
++ https://medium.com/data-science-in-your-pocket/music-generation-using-musictransformer-with-codes-c7be89ba85b1
 
 * Model Training
 
