@@ -4,14 +4,15 @@
 
 * Table of Contents                                                               :TOC:
 - [[#get-started][Get started]]
-- [[#data-collection][Data Collection]]
+- [[#ondo-data-collection][ONDO Data Collection]]
 - [[#data-preprocessing][Data Preprocessing]]
 - [[#model-design][Model Design]]
 - [[#model-training][Model Training]]
 - [[#model-evaluation][Model Evaluation]]
 - [[#conclusion][Conclusion]]
 
-* Get started
+* DONE Get started
+CLOSED: [2023-07-09 Sun 23:31]
 
 Python env
 
@@ -49,9 +50,17 @@ Build Package
 make build
 #+end_src
 
-* Data Collection
+* ONDO Data Collection
+:LOGBOOK:
+CLOCK: [2023-07-10 Mon 00:44]--[2023-07-10 Mon 01:13] =>  0:29
+CLOCK: [2023-07-09 Sun 23:29]--[2023-07-09 Sun 23:58] =>  0:29
+:END:
 
 http://music.tibet3.com/
+
+#+begin_src sh
+scrapy run spider music_crawl/spider/tibet3.py
+#+end_src
 
 * Data Preprocessing
 
