@@ -2,7 +2,7 @@
 #+title: TMG: A Tibetan Music Generation Project
 #+author: Sangjee Dondrub
 
-* Table of Contents                                                               :TOC:
+* Table of Contents :TOC:
 - [[#get-started][Get started]]
 - [[#ondo-data-collection][ONDO Data Collection]]
 - [[#data-preprocessing][Data Preprocessing]]
@@ -63,6 +63,13 @@ http://music.tibet3.com/
 #+begin_src sh
 scrapy run spider music_crawl/spider/tibet3.py
 #+end_src
+
+#+begin_src sh
+ls data/mp3 | wc -l
+#+end_src
+
+#+RESULTS:
+: 247
 
 * Data Preprocessing
 

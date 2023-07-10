@@ -23,6 +23,12 @@ packages = [
     { include = "tests", format = "sdist" },
 ]
 
+[[tool.poetry.source]]
+name = "aliyun"
+url = "http://mirrors.aliyun.com/pypi/simple"
+default = true
+
+
 [tool.poetry.dependencies]
 python = ">=3.8,<3.10"
 fire = "0.4.0"
