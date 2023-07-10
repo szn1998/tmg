@@ -8,6 +8,11 @@
 - [[#data-preprocessing][Data Preprocessing]]
   - [[#mp3-to-midi][mp3 to midi]]
   - [[#vocal-removing][Vocal removing]]
+  - [[#shell-script-to-do-both-removing-vocal-and-midi-conversion][Shell script to do both =removing-vocal= and =midi-conversion=]]
+- [[#dataset-class][Dataset Class]]
+  - [[#midi-dataset][Midi Dataset]]
+  - [[#accompaniment-dataset][Accompaniment Dataset]]
+  - [[#audio-text-dataset][Audio-Text Dataset]]
 - [[#model-design][Model Design]]
 - [[#model-training][Model Training]]
 - [[#model-evaluation][Model Evaluation]]
@@ -85,14 +90,44 @@ basic-pitch output-path/ sample.mp3
 
 + https://github.com/jason9693/midi-neural-processor
 
+#+begin_src sh
+ls data/midi/ | wc -l
+#+end_src
+
+#+RESULTS:
+: 76
+
 ** Vocal removing
 
 + https://vocalremover.org/
 + https://github.com/deezer/spleeter
 
+Change the github host to =ghproxy.com= in
 #+begin_src sh
 spleeter separate -p spleeter:2stems -o output sample.mp3
 #+end_src
+
+** Shell script to do both =removing-vocal= and =midi-conversion=
+
+#+begin_src sh :tangle remove-vocal-and-midi.sh :eval no
+for mp3 in data/mp3/*.mp3; do
+    echo "Processing $mp3"
+    # remove vocals
+    spleeter separate -p spleeter:2stems -o data/sep "$mp3"
+    fname="${mp3%.*}"
+    fname=`basename "$fname"`
+    acc="data/sep/$fname/accompaniment.wav"
+    mkdir -p data/midi/$fname
+    basic-pitch data/midi/$fname "$acc"
+    done
+done
+#+end_src
+
+* Dataset Class
+
+** Midi Dataset
+** Accompaniment Dataset
+** Audio-Text Dataset
 
 * Model Design
 
