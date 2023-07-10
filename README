@@ -1,6 +1,15 @@
 # -*- mode:org; mode:auto-fill; fill-column:80; coding:utf-8; -*-
 #+title: TMG: A Tibetan Music Generation Project
 #+author: Sangjee Dondrub
+#+date: \today
+#+babel: :cache yes
+#+latex_class: note
+#+options: toc:nil date:nil
+#+creator: Sangjee Dondrub <sangjeedondrub@live.com>
+#+latex_header: \subtitle{Yep, Music, You know.}
+#+latex_header: \doclangselection{en}
+#+latex_header: \usemnote{no}
+#+latex_header: \docinstselect{sangjee}
 
 * Table of Contents :TOC:
 - [[#get-started][Get started]]
@@ -17,6 +26,7 @@
 - [[#model-training][Model Training]]
 - [[#model-evaluation][Model Evaluation]]
 - [[#conclusion][Conclusion]]
+- [[#bibliography][Bibliography]]
 
 * DONE Get started
 CLOSED: [2023-07-09 Sun 23:31]
@@ -102,7 +112,8 @@ ls data/midi/ | wc -l
 + https://vocalremover.org/
 + https://github.com/deezer/spleeter
 
-Change the github host to =ghproxy.com= in
+Change the github host to =ghproxy.com= in =model= module in =spleeter=.
+
 #+begin_src sh
 spleeter separate -p spleeter:2stems -o output sample.mp3
 #+end_src
@@ -134,10 +145,18 @@ done
 + https://carlosholivan.github.io/DeepLearningMusicGeneration/
 + https://github.com/Khamies/PianoNotes-LSTM-Generation
 + https://www.tensorflow.org/tutorials/audio/music_generation
-+ https://medium.com/data-science-in-your-pocket/music-generation-using-musictransformer-with-codes-c7be89ba85b1
++ [[https://medium.com/data-science-in-your-pocket/music-generation-using-musictransformer-with-codes-c7be89ba85b1][music generation with transformer]]
 
 * Model Training
 
 * Model Evaluation
 
 * Conclusion
+* Bibliography
+:PROPERTIES:
+:UNNUMBERED: t
+:END:
+
+bibliography:~/roam/bibliography/references.bib,~/roam/bibliography/todo.bib,~/roam/bibliography/done.bib,~/roam/bibliography/book.bib
+
+bibliographystyle:apalike
