@@ -7,5 +7,4 @@ for mp3 in data/mp3/*.mp3; do
     acc="data/sep/$fname/accompaniment.wav"
     mkdir -p data/midi/$fname
     basic-pitch data/midi/$fname "$acc"
-    done
 done
