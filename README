@@ -11,7 +11,7 @@
 #+latex_header: \usemnote{no}
 #+latex_header: \docinstselect{sangjee}
 
-* Table of Contents :TOC:
+* Table of Contents                                                             :TOC:
 - [[#get-started][Get started]]
 - [[#ondo-data-collection][ONDO Data Collection]]
 - [[#data-preprocessing][Data Preprocessing]]
@@ -22,7 +22,9 @@
   - [[#midi-dataset][Midi Dataset]]
   - [[#accompaniment-dataset][Accompaniment Dataset]]
   - [[#audio-text-dataset][Audio-Text Dataset]]
-- [[#model-design][Model Design]]
+- [[#ondo-baseline-model][ONDO Baseline Model]]
+  - [[#music-generation-using-musictransformer-with-codes][Music Generation using MusicTransformer with codes]]
+- [[#models][Models]]
 - [[#model-training][Model Training]]
 - [[#model-evaluation][Model Evaluation]]
 - [[#conclusion][Conclusion]]
@@ -140,7 +142,14 @@ done
 ** Accompaniment Dataset
 ** Audio-Text Dataset
 
-* Model Design
+* ONDO Baseline Model
+:LOGBOOK:
+CLOCK: [2023-07-15 Sat 16:57]
+:END:
+
+** [[https://medium.com/data-science-in-your-pocket/music-generation-using-musictransformer-with-codes-c7be89ba85b1][Music Generation using MusicTransformer with codes]]
+
+* Models
 
 + https://carlosholivan.github.io/DeepLearningMusicGeneration/
 + https://github.com/Khamies/PianoNotes-LSTM-Generation
