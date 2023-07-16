@@ -1,14 +1,4 @@
-# #@title Install dependencies
-# !git clone --depth 1 https://github.com/asigalov61/Allegro-Music-Transformer
-# !pip install huggingface_hub
-# !pip install torch
-# !pip install einops
-# !pip install torch-summary
-# !pip install sklearn
-# !pip install tqdm
-# !pip install matplotlib
-# !apt install fluidsynth #Pip does not work for some reason. Only apt works
-# !pip install midi2audio
+# # Generate Music
 
 # # Imports
 
@@ -46,8 +36,10 @@ def divider():
 
 divider()
 
-model_checkpoint = "models/model_checkpoint_1434_steps_1.552_loss_0.5725_acc.pth" 
+model_checkpoint = "models/model_checkpoint_28699_steps_0.0504_loss_0.9873_acc.pth" 
 SEQ_LEN = 2048
+
+# !file $model_checkpoint
 
 model = TransformerWrapper(
     num_tokens = 3088,
@@ -205,10 +197,7 @@ for i in range(number_of_batches_to_generate):
       plt.ylabel("Pitch")
       plt.show()
 
-"""# (CUSTOM MIDI)"""
-
-#@title Load Seed MIDI
-select_seed_MIDI = "tibetan-2" 
+select_seed_MIDI = "seed-biwang-1" 
 full_path_to_custom_seed_MIDI = ""
 
 if full_path_to_custom_seed_MIDI == '':
@@ -531,6 +520,3 @@ for i in range(number_of_batches_to_generate):
       plt.xlabel("Time")
       plt.ylabel("Pitch")
       plt.show()
-# -
-
-

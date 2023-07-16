@@ -5,3 +5,14 @@
 !pip install sklearn
 !pip install tqdm
 !pip install matplotlib
+# #@title Install dependencies
+!git clone --depth 1 https://github.com/asigalov61/Allegro-Music-Transformer
+!pip install huggingface_hub
+!pip install torch
+!pip install einops
+!pip install torch-summary
+!pip install sklearn
+!pip install tqdm
+!pip install matplotlib
+!apt install fluidsynth #Pip does not work for some reason. Only apt works
+!pip install midi2audio
