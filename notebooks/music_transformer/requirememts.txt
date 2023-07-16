@@ -1,0 +1,7 @@
+!pip install --upgrade pip
+!pip install torch==2.0.1
+!pip install einops
+!pip install torch-summary
+!pip install sklearn
+!pip install tqdm
+!pip install matplotlib

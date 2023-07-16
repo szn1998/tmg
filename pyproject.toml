@@ -56,6 +56,17 @@ pyreadline = {version = "^2.1", optional = true}
 mike = { version="^1.1.2", optional=true}
 rootpath = "^0.1.1"
 scrapy = "^2.9.0"
+jupytext = "^1.14.7"
+musiclm-pytorch = "^0.2.2"
+xmltodict = "^0.13.0"
+pdftotext = "^2.2.2"
+pdfx = "^1.4.1"
+datasets = "^2.13.1"
+soundfile = "^0.12.1"
+librosa = "^0.10.0.post2"
+ipywidgets = "^8.0.7"
+pretty-midi = "^0.2.10"
+tensorboard = "^2.13.0"
 
 [tool.poetry.extras]
 test = [
@@ -84,6 +95,19 @@ tmg = 'tmg.cli:main'
 
 [tool.poetry.group.dev.dependencies]
 jupyterlab = "^4.0.2"
+jupyterlab-code-formatter = "^2.2.1"
+ipywidgets = "^8.0.7"
+jupyterlab-widgets = "^3.0.8"
+tqdm = "^4.65.0"
+jupytext = "^1.14.7"
+pandas = "^2.0.3"
+matplotlib = "^3.7.2"
+huggingface-hub = "^0.16.4"
+torch = "^2.0.1"
+einops = "^0.6.1"
+torch-summary = "^1.4.5"
+sklearn = "^0.0.post5"
+midi2audio = "^0.1.1"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
