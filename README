@@ -25,6 +25,7 @@
 - [[#ondo-baseline-model][ONDO Baseline Model]]
   - [[#music-generation-using-musictransformer-with-codes][Music Generation using MusicTransformer with codes]]
 - [[#models][Models]]
+- [[#conclusion-on-musictransformer][Conclusion on MusicTransformer]]
 - [[#model-training][Model Training]]
 - [[#model-evaluation][Model Evaluation]]
 - [[#conclusion][Conclusion]]
@@ -155,6 +156,17 @@ CLOCK: [2023-07-15 Sat 16:57]
 + https://github.com/Khamies/PianoNotes-LSTM-Generation
 + https://www.tensorflow.org/tutorials/audio/music_generation
 + [[https://medium.com/data-science-in-your-pocket/music-generation-using-musictransformer-with-codes-c7be89ba85b1][music generation with transformer]]
+
+* DONE Conclusion on MusicTransformer
+CLOSED: [2023-07-16 Sun 21:49]
+
+老师您好,我在一个非常小的数据集(245 条)上做了一个微调,虽然能生成,但是效果不是很
+好. 我浏览几篇文章, 发现他们都是使用非常高质量的钢琴曲,交响乐等, 而且规模非常大.
+
+我自己感觉如果直接使用下载的歌曲, 可能效果不会很好. 如果能把下载的歌曲的旋律
+(pitch)抽出来, 并对这些旋律做一些操作, 比如: 过滤,正则等, 从而构建质量较高, 比较
+能代表藏族歌曲的风格的数据集的话, 应该可以保证音乐生成的能力.
+
 
 * Model Training
 
