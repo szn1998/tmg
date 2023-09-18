@@ -15,7 +15,7 @@ import matplotlib.pyplot as plt
 from torchsummary import summary
 from sklearn import metrics
 
-torch.set_float32_matmul_precision('high')
+torch.set_float32_matmul_precision("high")
 
 import TMIDIX
 
@@ -33,10 +33,8 @@ filez.sort()
 train_data = torch.Tensor()
 
 for f in tqdm.tqdm(filez):
-    train_data = torch.cat(
-        (train_data, torch.Tensor(pickle.load(open(f, 'rb'))))
-    )
-    print('Loaded file:', f)
+    train_data = torch.cat((train_data, torch.Tensor(pickle.load(open(f, "rb")))))
+    print("Loaded file:", f)
 
 len(train_data)
 
@@ -85,7 +83,8 @@ model = torch.nn.DataParallel(model)
 
 # init_model_checkpoint = 'models/Allegro_Music_Transformer_Small_Trained_Model_56000_steps_0.9399_loss_0.7374_acc.pth'
 init_model_checkpoint = (
-    "models/model_checkpoint_1434_steps_1.552_loss_0.5725_acc.pth"
+    # "models/model_checkpoint_1434_steps_1.552_loss_0.5725_acc.pth"
+    "models/model_checkpoint_28699_steps_0.0504_loss_0.9873_acc.pth"
 )
 
 
@@ -135,7 +134,7 @@ val_losses = []
 train_accs = []
 val_accs = []
 
-for i in tqdm.tqdm(range(NUM_BATCHES), mininterval=10.0, desc='Training'):
+for i in tqdm.tqdm(range(NUM_BATCHES), mininterval=10.0, desc="Training"):
     model.train()
 
     for __ in range(GRADIENT_ACCUMULATE_EVERY):
@@ -143,8 +142,8 @@ for i in tqdm.tqdm(range(NUM_BATCHES), mininterval=10.0, desc='Training'):
         loss.backward(torch.ones(loss.shape).cuda())
 
     if i % PRINT_STATS_EVERY == 0:
-        print(f'Training loss: {loss.mean().item()}')
-        print(f'Training acc: {acc.mean().item()}')
+        print(f"Training loss: {loss.mean().item()}")
+        print(f"Training acc: {acc.mean().item()}")
 
     train_losses.append(loss.mean().item())
     train_accs.append(acc.mean().item())
@@ -158,41 +157,41 @@ for i in tqdm.tqdm(range(NUM_BATCHES), mininterval=10.0, desc='Training'):
         with torch.no_grad():
             val_loss, val_acc = model(next(val_loader))
 
-            print(f'Validation loss: {val_loss.mean().item()}')
-            print(f'Validation acc: {val_acc.mean().item()}')
+            print(f"Validation loss: {val_loss.mean().item()}")
+            print(f"Validation acc: {val_acc.mean().item()}")
 
             val_losses.append(val_loss.mean().item())
             val_accs.append(val_acc.mean().item())
 
-            print('Plotting training loss graph...')
+            print("Plotting training loss graph...")
 
             tr_loss_list = train_losses
-            plt.plot([i for i in range(len(tr_loss_list))], tr_loss_list, 'b')
+            plt.plot([i for i in range(len(tr_loss_list))], tr_loss_list, "b")
             plt.show()
             plt.close()
-            print('Done!')
+            print("Done!")
 
-            print('Plotting training acc graph...')
+            print("Plotting training acc graph...")
 
             tr_loss_list = train_accs
-            plt.plot([i for i in range(len(tr_loss_list))], tr_loss_list, 'b')
+            plt.plot([i for i in range(len(tr_loss_list))], tr_loss_list, "b")
             plt.show()
             plt.close()
-            print('Done!')
+            print("Done!")
 
-            print('Plotting validation loss graph...')
+            print("Plotting validation loss graph...")
             tr_loss_list = val_losses
-            plt.plot([i for i in range(len(tr_loss_list))], tr_loss_list, 'b')
+            plt.plot([i for i in range(len(tr_loss_list))], tr_loss_list, "b")
             plt.show()
             plt.close()
-            print('Done!')
+            print("Done!")
 
-            print('Plotting validation acc graph...')
+            print("Plotting validation acc graph...")
             tr_loss_list = val_accs
-            plt.plot([i for i in range(len(tr_loss_list))], tr_loss_list, 'b')
+            plt.plot([i for i in range(len(tr_loss_list))], tr_loss_list, "b")
             plt.show()
             plt.close()
-            print('Done!')
+            print("Done!")
 
     if i % GENERATE_EVERY == 0:
         model.eval()
@@ -205,87 +204,87 @@ for i in tqdm.tqdm(range(NUM_BATCHES), mininterval=10.0, desc='Training'):
         print(sample)
 
     if i % SAVE_EVERY == 0:
-        print('Saving model progress. Please wait...')
+        print("Saving model progress. Please wait...")
         print(
-            'model_checkpoint_'
+            "model_checkpoint_"
             + str(i)
-            + '_steps_'
+            + "_steps_"
             + str(round(float(train_losses[-1]), 4))
-            + '_loss_'
+            + "_loss_"
             + str(round(float(train_accs[-1]), 4))
-            + '_acc.pth'
+            + "_acc.pth"
         )
 
         fname = (
-            'models/model_checkpoint_'
+            "models/model_checkpoint_"
             + str(i)
-            + '_steps_'
+            + "_steps_"
             + str(round(float(train_losses[-1]), 4))
-            + '_loss_'
+            + "_loss_"
             + str(round(float(train_accs[-1]), 4))
-            + '_acc.pth'
+            + "_acc.pth"
         )
 
         torch.save(model.state_dict(), fname)
 
         data = [train_losses, train_accs, val_losses, val_accs]
 
-        TMIDIX.Tegridy_Any_Pickle_File_Writer(data, 'log/losses_accs')
+        TMIDIX.Tegridy_Any_Pickle_File_Writer(data, "log/losses_accs")
 
-        print('Done!')
+        print("Done!")
 
 
-print('Saving model progress. Please wait...')
+print("Saving model progress. Please wait...")
 print(
-    'model_checkpoint_'
+    "model_checkpoint_"
     + str(i)
-    + '_steps_'
+    + "_steps_"
     + str(round(float(train_losses[-1]), 4))
-    + '_loss_'
+    + "_loss_"
     + str(round(float(train_accs[-1]), 4))
-    + '_acc.pth'
+    + "_acc.pth"
 )
 
 fname = (
-    'models/model_checkpoint_'
+    "models/model_checkpoint_"
     + str(i)
-    + '_steps_'
+    + "_steps_"
     + str(round(float(train_losses[-1]), 4))
-    + '_loss_'
+    + "_loss_"
     + str(round(float(train_accs[-1]), 4))
-    + '_acc.pth'
+    + "_acc.pth"
 )
 
 torch.save(model.state_dict(), fname)
 
 # Save training loss graph
 
-plt.plot([i for i in range(len(train_losses))], train_losses, 'b')
-plt.savefig('log/training_loss_graph.png')
+plt.plot([i for i in range(len(train_losses))], train_losses, "b")
+plt.savefig("log/training_loss_graph.png")
 plt.close()
-print('Done!')
+print("Done!")
 
 # Save training acc graph
 
-plt.plot([i for i in range(len(train_accs))], train_accs, 'b')
-plt.savefig('log/training_acc_graph.png')
+plt.plot([i for i in range(len(train_accs))], train_accs, "b")
+plt.savefig("log/training_acc_graph.png")
 plt.close()
-print('Done!')
+print("Done!")
 
 # Save validation loss graph
 
-plt.plot([i for i in range(len(val_losses))], val_losses, 'b')
-plt.savefig('log/validation_loss_graph.png')
+plt.plot([i for i in range(len(val_losses))], val_losses, "b")
+plt.savefig("log/validation_loss_graph.png")
 plt.close()
-print('Done!')
+print("Done!")
 
 # Save validation acc graph
 
-plt.plot([i for i in range(len(val_accs))], val_accs, 'b')
-plt.savefig('log/validation_acc_graph.png')
+plt.plot([i for i in range(len(val_accs))], val_accs, "b")
+plt.savefig("log/validation_acc_graph.png")
 plt.close()
-print('Done!')
+print("Done!")
 
 data = [train_losses, train_accs, val_losses, val_accs]
 
-TMIDIX.Tegridy_Any_Pickle_File_Writer(data, 'log/losses_accuracies')
+TMIDIX.Tegridy_Any_Pickle_File_Writer(data, "log/losses_accuracies")
