@@ -29,6 +29,8 @@
 - [[#model-training][Model Training]]
 - [[#model-evaluation][Model Evaluation]]
 - [[#conclusion][Conclusion]]
+- [[#references][References]]
+  - [[#music-synthesis-as-tts-task][Music synthesis as tts task]]
 - [[#bibliography][Bibliography]]
 
 * DONE Get started
@@ -167,12 +169,24 @@ CLOSED: [2023-07-16 Sun 21:49]
 (pitch)抽出来, 并对这些旋律做一些操作, 比如: 过滤,正则等, 从而构建质量较高, 比较
 能代表藏族歌曲的风格的数据集的话, 应该可以保证音乐生成的能力.
 
-
 * Model Training
 
 * Model Evaluation
 
 * Conclusion
+
+* References
+
+** Music synthesis as tts task
+
+We got many pairs of lyrics and music audio, why not treat the music synthesis
+as a tts task. Give the text, then the music will be generated.
+
+I noticed there a bunch of researching work out there based on this ``tts''
+idea, keep exploring.
+
++ 开源歌声合成系统: https://github.com/xushengyuan/Fastsinging
+
 * Bibliography
 :PROPERTIES:
 :UNNUMBERED: t
